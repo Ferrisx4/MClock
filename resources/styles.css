@@ -1,0 +1,46 @@
+.background {
+  viewport-fill: fb-green;
+}
+
+#myLabel {
+  font-size: 80;
+  font-family: System-Bold;
+  text-length: 32;
+  text-anchor: middle;
+  x: 50%;
+  y: 50%+40;
+  fill: white;
+}
+
+.dataTextLeft
+{
+  font-size: 30;
+  font-family: Colfax-Medium;
+  text-length: 32;
+  text-anchor: start;
+  x: 50%;
+  y: 50%+40;
+  fill: white;
+}
+
+.dataTextRight
+{
+  font-size: 30;
+  font-family: Colfax-Medium;
+  text-length: 32;
+  text-anchor: end;
+  x: 50%;
+  y: 50%+40;
+  fill: white;
+}
+
+.date
+{
+  font-size: 27;
+  font-family: Colfax;
+  text-length: 2;
+  text-anchor: end;
+  x: 50%;
+  y: 50%+40;
+  fill: white;
+}
