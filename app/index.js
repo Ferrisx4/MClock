@@ -42,13 +42,12 @@ hrm.onreading = function() {
 clock.granularity = "seconds";
 
 //Get DOM elements
-let hourHand = document.getElementById("hours");
-let minHand = document.getElementById("mins");
-let secHand = document.getElementById("secs");
-let batBar = document.getElementById("bat");
-let batArc = document.getElementById("batArc");
-let stepText = document.getElementById("steps");
-let date = document.getElementById("date");
+let hourHand =  document.getElementById("hours");
+let minHand =   document.getElementById("mins");
+let secHand =   document.getElementById("secs");
+let batArc =    document.getElementById("batArc");
+let stepText =  document.getElementById("steps");
+let date =      document.getElementById("date");
 let stairText = document.getElementById("stairs");
 
 // Returns an angle (0-360) for the current hour in the day, including minutes
