@@ -9,7 +9,7 @@ By tapping on the center of the watch face (green circle), the display will be s
 To re-enable display auto-sleep, tap the center again.
 
 ## Live stats
-* Upper Right: Atmospheric pressure sensor reading - InHG
+* Upper Right: Atmospheric pressure sensor reading - inHg
 * Lower Right:
   * Upper: Floors climbed today
   * Lower: Steps taken today
