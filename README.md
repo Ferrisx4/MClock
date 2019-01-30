@@ -19,3 +19,6 @@ To re-enable display auto-sleep, tap the center again.
 The recommended way to get this watch face on your device is to clone the repository and [follow these instructions](https://dev.fitbit.com/build/guides/command-line-interface/)
 
 If you don't have a suitable development environment and want to use the watch face as-is, import the files into a new project on [Fitbit Studio](https://studio.fitbit.com)
+
+## Screenshot
+![Current Screenshot](https://github.com/Ferrisx4/MClock/blob/master/MClock%20Screenshot.png)
