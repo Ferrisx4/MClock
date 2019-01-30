@@ -49,6 +49,7 @@ let batArc =    document.getElementById("batArc");
 let stepText =  document.getElementById("steps");
 let date =      document.getElementById("date");
 let stairText = document.getElementById("stairs");
+let tzOffSet  = document.getElementById("tzOffSet");
 
 // Returns an angle (0-360) for the current hour in the day, including minutes
 function hoursToAngle(hours, minutes) {
@@ -108,6 +109,10 @@ function updateClock() {
           console.log("Battery nominal, setting indicator to green");
         }
       batArc.sweepAngle = battery.chargeLevel/100 * 62;
+
+      // Determine timezone offset, indicate if not EST
+      let tz = now.getTimezoneOffset() / 60 * -1;
+      tzOffSet.text = tz;
     }
   // Test for changing gradient (every other second)
   let faceGradient = document.getElementById("faceGradient");
@@ -203,18 +208,24 @@ rightButton.onmousedown = function(e) {
 }
 */
 
- 
+// Handle center button presses
+
 function displayToggle(){
   vibration.start("bump");
-  console.log("Toggling display auto-off");
   if (display.autoOff)
     {
+      console.log("Disabling display auto-off");
       centerCircle.style.fill = "#FF0000";
       display.autoOff = false;
+
+      tzOffSet.style.opacity = parseInt("1.0");
     }
   else
     {
+      console.log("Enabling display auto-off");
       centerCircle.style.fill = "fb-green";
       display.autoOff = true;
+
+      tzOffSet.style.opacity = parseInt("0.0");
     }
 }
