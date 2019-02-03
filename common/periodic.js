@@ -9,19 +9,19 @@ export function update_battery(battery, batArc)
     let batteryLevel = battery.chargeLevel;
       console.log("Battery level: " + batteryLevel);
       if (batteryLevel < 10)
-        {
-          batArc.style.fill = "fb-red";
-          console.log("Battery low, setting indicator to red");
-        }
+      {
+        batArc.style.fill = "fb-red";
+        console.log("Battery low, setting indicator to red");
+      }
       else if(batteryLevel < 25)
       {
           batArc.style.fill = "fb-yellow";
           console.log("Battery somewhat low, setting indicator to yellow");
       }
       else
-        {
-          batArc.style.fill = "fb-green";
-          console.log("Battery nominal, setting indicator to green");
-        }
+      {
+        batArc.style.fill = "fb-green";
+        console.log("Battery nominal, setting indicator to green");
+      }
       batArc.sweepAngle = battery.chargeLevel/100 * 62;
 }
