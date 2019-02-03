@@ -10,8 +10,7 @@
       "access_activity"
     ],
     "buildTargets": [
-      "higgs",
-      "meson"
+      "higgs"
     ],
     "i18n": {
       "en": {
