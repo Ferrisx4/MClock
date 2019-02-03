@@ -15,6 +15,8 @@ To re-enable display auto-sleep, tap the center again.
   * Lower: Steps taken today
 * Lower Left: Current heartrate (beats per minute)
 
+These items do not have labels or units displayed. This is an intended design aspect; each of the datapoints can be divined through context or familiarity.
+
 ## Installation
 The recommended way to get this watch face on your device is to clone the repository and [follow these instructions](https://dev.fitbit.com/build/guides/command-line-interface/)
 
@@ -22,3 +24,15 @@ If you don't have a suitable development environment and want to use the watch f
 
 ## Screenshot
 ![Current Screenshot](https://github.com/Ferrisx4/MClock/blob/master/MClock%20Screenshot.png)
+
+Fitbit Ionic
+
+## To-do
+- [x] Show timezone offset (currently default to EST)
+- [ ] Settings
+  - [ ] Colors
+  - [ ] Default timezone
+  - [ ] Atmospheric pressure units
+- [ ] Make code a little more organized
+- [ ] Calendar screen to visualize this month's calendar
+- [ ] Extended Date/time screen (week number, day of year, % of year progress)
