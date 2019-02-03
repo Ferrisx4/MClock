@@ -12,15 +12,7 @@ import * as periodic from "../common/periodic";
 //For Developing, set to false if desired.
 display.autoOff = true;
 
-//Various Variables
-var longTouch = false;  //For registering long-tap events
-var expireTouch = false;
-//var touchStart = 0;
-var currentScreen = 0;
-
-
 //Pressure Stuff
-
 var barom = new Barometer({ frequency: 1});
 let barText = document.getElementById("bar");
 barom.onreading = function() {
@@ -37,6 +29,7 @@ hrm.onreading = function() {
   //console.log("Hart");
   hrmText.text = hrm.heartRate;
 }
+hrm.start();
 
 // Update the clock every second
 clock.granularity = "seconds";
@@ -92,8 +85,6 @@ function updateClock() {
       let tz = now.getTimezoneOffset() / 60 * -1;
       tzOffSet.text = tz;
     } 
-  
-  hrm.start();
 }
 
 //Basic stuff to do once
