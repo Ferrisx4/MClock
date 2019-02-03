@@ -40,3 +40,4 @@ Fitbit Ionic
 - [ ] Make code a little more organized
 - [ ] Calendar screen to visualize this month's calendar
 - [ ] Extended Date/time screen (week number, day of year, % of year progress)
+- [ ] Versa compatibility
