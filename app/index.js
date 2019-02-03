@@ -6,7 +6,6 @@ import { battery } from "power";
 import { today } from "user-activity";
 import { vibration } from "haptics";
 import { display } from "display";
-import * as utils from "../common/utils";
 import * as periodic from "../common/periodic";
 
 
