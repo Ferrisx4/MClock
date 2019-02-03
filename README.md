@@ -33,6 +33,10 @@ Fitbit Ionic
   - [ ] Colors
   - [ ] Default timezone
   - [ ] Atmospheric pressure units
+  - [ ] Which datapoints to be shown and when
+    * Always show
+    * Only in 'always-on' mode
+    * Never
 - [ ] Make code a little more organized
 - [ ] Calendar screen to visualize this month's calendar
 - [ ] Extended Date/time screen (week number, day of year, % of year progress)
