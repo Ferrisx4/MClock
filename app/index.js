@@ -7,6 +7,7 @@ import { today } from "user-activity";
 import { vibration } from "haptics";
 import { display } from "display";
 import * as utils from "../common/utils";
+import * as periodic from "../common/periodic";
 
 
 //For Developing, set to false if desired.
@@ -53,8 +54,8 @@ let tzOffSet  = document.getElementById("tzOffSet");
 
 // Returns an angle (0-360) for the current hour in the day, including minutes
 function hoursToAngle(hours, minutes) {
-  let hourAngle = (360 / 12) * hours;
-  let minAngle = (360 / 12 / 60) * minutes;
+  let hourAngle = 30 * hours;           // Determine the angle at which the hand would be at 0 past the hour
+  let minAngle = (0.5) * minutes;     // Determine the angle the hand would be at when taking into account the minutes
   return hourAngle + minAngle;
 }
 
@@ -91,40 +92,12 @@ function updateClock() {
       //console.log("doing minutely things, don't mind me...");
       barom.start();
       
-      let batteryLevel = battery.chargeLevel;
-      console.log("Battery level: " + batteryLevel);
-      if (batteryLevel < 10)
-        {
-          batArc.style.fill = "fb-red";
-          console.log("Battery low, setting indicator to red");
-        }
-      else if(batteryLevel < 25)
-      {
-          batArc.style.fill = "fb-yellow";
-          console.log("Battery somewhat low, setting indicator to yellow");
-      }
-      else
-        {
-          batArc.style.fill = "fb-green";
-          console.log("Battery nominal, setting indicator to green");
-        }
-      batArc.sweepAngle = battery.chargeLevel/100 * 62;
+      periodic.update_battery(battery,batArc);
 
       // Determine timezone offset, indicate if not EST
       let tz = now.getTimezoneOffset() / 60 * -1;
       tzOffSet.text = tz;
-    }
-  // Test for changing gradient (every other second)
-  let faceGradient = document.getElementById("faceGradient");
-  if (parseInt(secs) % 2 == 0)
-     {
-       //faceGradient.gradient-color1 = "black";
-     }
-  else
-    {
-       //faceGradient.gradient-color1 = "white";  
-    }
-  
+    } 
   
   hrm.start();
 }
