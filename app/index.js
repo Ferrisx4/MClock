@@ -9,8 +9,8 @@ import { display } from "display";
 import * as utils from "../common/utils";
 
 
-//For Developing
-//display.autoOff = false;
+//For Developing, set to false if desired.
+display.autoOff = true;
 
 //Various Variables
 var longTouch = false;  //For registering long-tap events
