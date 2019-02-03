@@ -60,13 +60,8 @@ function hoursToAngle(hours, minutes) {
 }
 
 // Returns an angle (0-360) for minutes
-function minutesToAngle(minutes) {
-  return (360 / 60) * minutes;
-}
-
-// Returns an angle (0-360) for seconds
-function secondsToAngle(seconds) {
-  return (360 / 60) * seconds;
+function sixtiethToAngle(value) {
+  return 6 * value;
 }
 
 // Rotate the hands every tick (and other various events that need to run every second)
@@ -77,8 +72,8 @@ function updateClock() {
   let secs  = now.getSeconds();
   let dated = now.getDate();
   hourHand.groupTransform.rotate.angle = hoursToAngle(hours % 12, mins);
-  minHand.groupTransform.rotate.angle = minutesToAngle(mins);
-  secHand.groupTransform.rotate.angle = secondsToAngle(secs);
+  minHand.groupTransform.rotate.angle = sixtiethToAngle(mins);
+  secHand.groupTransform.rotate.angle = sixtiethToAngle(secs);
   date.text = dated;
   
   stepText.text = today.local.steps;
