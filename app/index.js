@@ -13,33 +13,6 @@ import * as periodic from "../common/periodic";
 //  For Developing, set to false if desired.
 display.autoOff = true;
 
-
-/**
- *  Initialize variables and functions
- */
-
-// Fetch the user's resting heartrate (this does not need to be periodically updated - it changes very infrequently)
-let rHeartRate = user.restingHeartRate;
-
-// Pressure Stuff
-var barom = new Barometer({ frequency: 1});
-let barText = document.getElementById("bar");
-barom.onreading = function() {
-  barText.text = (parseInt(barom.pressure)/3386.3886).toFixed(2);
-  barom.stop();
-}
-barom.start(); //Initial barometer reading
-
-
-// Heartrate Stuff
-var hrm = new HeartRateSensor();
-let hrmText = document.getElementById("hrm");
-hrm.onreading = function() {
-  //console.log("Hart");
-  hrmText.text = hrm.heartRate + ' (' + rHeartRate + ')';
-}
-hrm.start();
-
 // Get DOM elements
 let hourHand =  document.getElementById("hours");
 let minHand =   document.getElementById("mins");
@@ -61,6 +34,39 @@ let countdScreen   = document.getElementById("countd");
 let leftButton     = document.getElementById("toLeft");
 let rightButton    = document.getElementById("toRight");
 
+/**
+ *  Initialize variables and functions
+ */
+
+// The all-important date
+let now = new Date();
+
+// Fetch the user's resting heartrate (this does not need to be periodically updated - it changes very infrequently)
+let rHeartRate = user.restingHeartRate;
+
+// Fetch the current timezone offset
+let tz = now.getTimezoneOffset() / 60 * -1;
+tzOffSet.text = tz;
+
+// Pressure Stuff
+var barom = new Barometer({ frequency: 1});
+let barText = document.getElementById("bar");
+barom.onreading = function() {
+  barText.text = (parseInt(barom.pressure)/3386.3886).toFixed(2);
+  barom.stop();
+}
+barom.start(); //Initial barometer reading
+
+
+// Heartrate Stuff
+var hrm = new HeartRateSensor();
+let hrmText = document.getElementById("hrm");
+hrm.onreading = function() {
+  //console.log("Hart");
+  hrmText.text = hrm.heartRate + ' (' + rHeartRate + ')';
+}
+hrm.start();
+
 // Set the battery level when the clockface first loads
 batArc.sweepAngle = battery.chargeLevel/100 * 62;
 
@@ -79,7 +85,7 @@ function sixtiethToAngle(value) {
 // Rotate the hands every tick (and other various events that need to run every second)
 // This is the main event
 function updateClock() {
-  let now = new Date();
+  now = new Date();
   let hours = now.getHours();
   let mins  = now.getMinutes();
   let secs  = now.getSeconds();
@@ -102,8 +108,8 @@ function updateClock() {
       
       periodic.update_battery(battery,batArc);
 
-      // Determine timezone offset, indicate if not EST
-      let tz = now.getTimezoneOffset() / 60 * -1;
+      // Recalculate timezone offset
+      tz = now.getTimezoneOffset() / 60 * -1;
       tzOffSet.text = tz;
     } 
 }
