@@ -58,7 +58,7 @@
 	  <!-- Data Stuff -->
 	  <svg>
 		<text id="bar"      class="dataTextRight" x="348" y="22"  width="100" height="40"></text>
-		<text id="hrm"      class="dataTextLeft"  x="0"   y="250" width="100" height="40">--</text>
+		<text id="hrm"      class="dataTextLeft"  x="0"   y="250" width="120" height="40">--</text>
 		<text id="steps"    class="dataTextRight" x="348" y="250" width="100" height="40">--</text>
     <text id="stairs"   class="dataTextRight" x="348" y="220" width="100" height="40">--</text>
 	  <!-- 	<text id="timeText" class="dataTextLeft"  x="0"   y="22"  width="100" height="40">tiempo</text> -->
