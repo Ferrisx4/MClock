@@ -75,12 +75,12 @@
 	
 	  <!-- Today's Date (near 3 o'clock) -->
 	  <svg>
-		<text id="date" class="date" x="76%" y="135" width="100" height="40"></text>
+		 <text id="date" class="date" x="76%" y="135" width="100" height="40"></text>
 	  </svg>
 
 		<!-- The Timezone offset (if not in EST) -->
 	  <svg>
-		 <text id="tzOffSet" class="date" text-anchor="middle" x="50%" y="80%" width="100" height="40">--</text>
+		 <text id="tzOffSet" class="tzOffSet" text-anchor="middle" x="50%" y="80%" width="100" height="40">--</text>
 	  </svg>
   
 	  <!-- Clock tick marks -->

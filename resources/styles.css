@@ -43,5 +43,16 @@
   x: 50%;
   y: 50%+40;
   fill: white;
+}
+
+.tzOffSet
+{
+  font-size: 27;
+  font-family: Colfax;
+  text-length: 2;
+  text-anchor: end;
+  x: 50%;
+  y: 50%+40;
+  fill: white;
   opacity:0.0;
 }
