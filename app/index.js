@@ -3,16 +3,25 @@ import document from "document";
 import { Barometer } from "barometer";
 import { HeartRateSensor } from "heart-rate";
 import { battery } from "power";
-import { today } from "user-activity";
+import { today } from "user-activity";              // Steps, stairs climbed
+import { user } from "user-profile";                // Resting heart rate
 import { vibration } from "haptics";
 import { display } from "display";
 import * as periodic from "../common/periodic";
 
 
-//For Developing, set to false if desired.
+//  For Developing, set to false if desired.
 display.autoOff = true;
 
-//Pressure Stuff
+
+/**
+ *  Initialize variables and functions
+ */
+
+// Fetch the user's resting heartrate (this does not need to be periodically updated - it changes very infrequently)
+let rHeartRate = user.restingHeartRate;
+
+// Pressure Stuff
 var barom = new Barometer({ frequency: 1});
 let barText = document.getElementById("bar");
 barom.onreading = function() {
@@ -22,19 +31,16 @@ barom.onreading = function() {
 barom.start(); //Initial barometer reading
 
 
-//Heartrate Stuff
+// Heartrate Stuff
 var hrm = new HeartRateSensor();
 let hrmText = document.getElementById("hrm");
 hrm.onreading = function() {
   //console.log("Hart");
-  hrmText.text = hrm.heartRate;
+  hrmText.text = hrm.heartRate + ' (' + rHeartRate + ')';
 }
 hrm.start();
 
-// Update the clock every second
-clock.granularity = "seconds";
-
-//Get DOM elements
+// Get DOM elements
 let hourHand =  document.getElementById("hours");
 let minHand =   document.getElementById("mins");
 let secHand =   document.getElementById("secs");
@@ -43,6 +49,20 @@ let stepText =  document.getElementById("steps");
 let date =      document.getElementById("date");
 let stairText = document.getElementById("stairs");
 let tzOffSet  = document.getElementById("tzOffSet");
+
+// Stuff for toggling the display on/off
+var centerCircle = document.getElementById("centerCircle");
+var centerCircleTappable = document.getElementById("centerCircleTappable");
+
+// Stuff for navigating between screens
+let calendarScreen = document.getElementById("calendar");
+let clockScreen    = document.getElementById("clock");
+let countdScreen   = document.getElementById("countd");
+let leftButton     = document.getElementById("toLeft");
+let rightButton    = document.getElementById("toRight");
+
+// Set the battery level when the clockface first loads
+batArc.sweepAngle = battery.chargeLevel/100 * 62;
 
 // Returns an angle (0-360) for the current hour in the day, including minutes
 function hoursToAngle(hours, minutes) {
@@ -57,6 +77,7 @@ function sixtiethToAngle(value) {
 }
 
 // Rotate the hands every tick (and other various events that need to run every second)
+// This is the main event
 function updateClock() {
   let now = new Date();
   let hours = now.getHours();
@@ -87,9 +108,6 @@ function updateClock() {
     } 
 }
 
-//Basic stuff to do once
-batArc.sweepAngle = battery.chargeLevel/100 * 62;
-
 // Draw the clock tick marks
 var clockTicks = document.getElementsByClassName("clockTick");
 var deg = 30;
@@ -109,25 +127,35 @@ for (d = 0;d<2;d++)
     deg += 60;
   }
 
-
-// Update the clock every tick event
+// Update the clock every second and make it tick
+clock.granularity = "seconds";
 clock.ontick = () => updateClock();
-
-// Stuff for toggling the display on/off
-var centerCircle = document.getElementById("centerCircle");
-var centerCircleTappable = document.getElementById("centerCircleTappable");
-
-// Stuff for navigating between screens
-let calendarScreen = document.getElementById("calendar");
-let clockScreen    = document.getElementById("clock");
-let countdScreen   = document.getElementById("countd");
-let leftButton     = document.getElementById("toLeft");
-let rightButton    = document.getElementById("toRight");
 
 //Register tap events
 centerCircleTappable.onmousedown = function(e) {
    displayToggle();
 }
+
+function displayToggle(){
+  vibration.start("bump");
+  if (display.autoOff)
+    {
+      console.log("Disabling display auto-off");
+      centerCircle.style.fill = "#FF0000";
+      display.autoOff = false;
+
+      tzOffSet.style.opacity = parseInt("1.0");
+    }
+  else
+    {
+      console.log("Enabling display auto-off");
+      centerCircle.style.fill = "fb-green";
+      display.autoOff = true;
+
+      tzOffSet.style.opacity = parseInt("0.0");
+    }
+}
+
 // Stuff for navigating between screens (Future)
 /*
 leftButton.onmousedown = function(e) {
@@ -168,22 +196,4 @@ rightButton.onmousedown = function(e) {
 
 // Handle center button presses
 
-function displayToggle(){
-  vibration.start("bump");
-  if (display.autoOff)
-    {
-      console.log("Disabling display auto-off");
-      centerCircle.style.fill = "#FF0000";
-      display.autoOff = false;
 
-      tzOffSet.style.opacity = parseInt("1.0");
-    }
-  else
-    {
-      console.log("Enabling display auto-off");
-      centerCircle.style.fill = "fb-green";
-      display.autoOff = true;
-
-      tzOffSet.style.opacity = parseInt("0.0");
-    }
-}
