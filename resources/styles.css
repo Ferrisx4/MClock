@@ -14,7 +14,7 @@
 
 .dataTextLeft
 {
-  font-size: 30;
+  font-size: 28;
   font-family: Colfax-Medium;
   text-length: 32;
   text-anchor: start;
@@ -25,7 +25,7 @@
 
 .dataTextRight
 {
-  font-size: 30;
+  font-size: 28;
   font-family: Colfax-Medium;
   text-length: 32;
   text-anchor: end;
