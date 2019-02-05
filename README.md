@@ -13,7 +13,7 @@ To re-enable display auto-sleep, tap the center again.
 * Lower Right:
   * Upper: Floors climbed today
   * Lower: Steps taken today
-* Lower Left: Current heartrate (beats per minute)
+* Lower Left: Current heartrate (with resting heart rate in parenthesis) - measured in Beats Per Minute
 
 These items do not have labels or units displayed. This is an intended design aspect; each of the datapoints can be divined through context or familiarity.
 
