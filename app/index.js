@@ -53,7 +53,6 @@ var barom = new Barometer({ frequency: 1});
 let barText = document.getElementById("bar");
 barom.onreading = function() {
   barText.text = (parseInt(barom.pressure)/3386.3886).toFixed(2);
-  barom.stop();
 }
 barom.start(); //Initial barometer reading
 
@@ -104,7 +103,7 @@ function updateClock() {
     if (parseInt(secs) % 5 == 0)
     {
       //console.log("doing minutely things, don't mind me...");
-      barom.start();
+      //barom.start();
       
       periodic.update_battery(battery,batArc);
 
