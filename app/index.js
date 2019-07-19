@@ -138,7 +138,7 @@ clock.ontick = () => updateClock();
 
 //Register tap events
 centerCircleTappable.onmousedown = function(e) {
-   displayToggle();
+  displayToggle();
 }
 
 function displayToggle(){
@@ -160,45 +160,5 @@ function displayToggle(){
       tzOffSet.style.opacity = parseInt("0.0");
     }
 }
-
-// Stuff for navigating between screens (Future)
-/*
-leftButton.onmousedown = function(e) {
-   if (currentScreen == 0)
-   {
-     clockScreen.style.display="none";
-     leftButton.style.display="none";
-     countdScreen.style.display="visible";
-     currentScreen = -1;
-   }
-   else if (currentScreen == 1)
-   {
-       calendarScreen.style.visibility="hidden";
-       rightButton.style.visibility="visible";
-       clockScreen.style.visibililty="visible";
-       currentScreen = 0;
-   }
-  console.log("leftButton");
-}
-rightButton.onmousedown = function(e) {
-   if (currentScreen == 0)
-   {
-     clockScreen.style.visibility="hidden";
-     rightButton.style.visibility="hidden";
-     calendarScreen.style.visibility="visible";
-     currentScreen = 1;
-   }
-   else if (currentScreen == -1)
-   {
-       countdScreen.style.visibility="hidden";
-       leftButton.style.visibility="visible";
-       clockScreen.style.visibililty="visible";
-       currentScreen = 0;
-   }
-  console.log("rightButton");
-}
-*/
-
-// Handle center button presses
 
 
