@@ -27,13 +27,6 @@ let tzOffSet  = document.getElementById("tzOffSet");
 var centerCircle = document.getElementById("centerCircle");
 var centerCircleTappable = document.getElementById("centerCircleTappable");
 
-// Stuff for navigating between screens
-let calendarScreen = document.getElementById("calendar");
-let clockScreen    = document.getElementById("clock");
-let countdScreen   = document.getElementById("countd");
-let leftButton     = document.getElementById("toLeft");
-let rightButton    = document.getElementById("toRight");
-
 /**
  *  Initialize variables and functions
  */
