@@ -7,6 +7,7 @@ import { today } from "user-activity";              // Steps, stairs climbed
 import { user } from "user-profile";                // Resting heart rate
 import { vibration } from "haptics";
 import { display } from "display";
+import { BodyPresenceSensor } from "body-presence";
 import * as periodic from "../common/periodic";
 
 
@@ -49,15 +50,28 @@ barom.onreading = function() {
 }
 barom.start(); //Initial barometer reading
 
-
 // Heartrate Stuff
 var hrm = new HeartRateSensor();
 let hrmText = document.getElementById("hrm");
 hrm.onreading = function() {
-  //console.log("Hart");
   hrmText.text = hrm.heartRate + ' (' + rHeartRate + ')';
 }
 hrm.start();
+
+// Body-presence stuff
+var bps = new BodyPresenceSensor();
+bps.onreading = function() {
+  if (bps.present)
+  {
+    hrm.start();
+  }
+  else
+  {
+    hrm.stop();
+    hrmText.text = '--' + ' (' + rHeartRate + ')';
+  }
+}
+bps.start();
 
 // Set the battery level when the clockface first loads
 batArc.sweepAngle = battery.chargeLevel/100 * 62;
@@ -153,5 +167,3 @@ function displayToggle(){
       tzOffSet.style.opacity = parseInt("0.0");
     }
 }
-
-
