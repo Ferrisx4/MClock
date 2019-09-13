@@ -1,29 +1,15 @@
 <!--<svg viewport-fill="#38012D"> -->
 <svg id="everything">
-
-	
-	<!-- Countdown and calendar screens
-	<svg id="calendar" viewport-fill="#999999" visibility="hidden">
-		<rect x="0" y="0" width="100%" height="100%" fill="blue" />
-		<text id="bar" class="dataTextRight" x="348" y="22" width="100" height="40">Calendar</text>
-	</svg>
-	
-	<svg id="countd" viewport-fill="#999999" visibility="hidden">
-		<rect x="0" y="0" width="100%" height="100%" fill="green" />
-		<text id="bar" class="dataTextRight" x="348" y="22" width="100" height="40">countd</text>
-	</svg>
-  -->
-	
 	<svg id="clock" viewport-fill="#FF8800" visibility="visible">
     
     <!-- Fancy Background mask -->
     <!-- Mask -->
     <mask id="mask">
-      <circle cx="50%" cy="50%" r="120" fill="red" />
+        <circle cx="50%" cy="50%" r="120" fill="red" />
     </mask>
     <!-- Gradient -->
     <svg mask="#mask" width="100%" height="100%">
-      <gradientRect id="faceGradient" width="100%" height="100%" fill="cyan"
+		<gradientRect id="faceGradient" width="100%" height="100%" fill="cyan"
         gradient-type="radial"
         gradient-x1="50%" gradient-y1="50%"
         gradient-x2="50%+240" gradient-y2="50%+240"
@@ -32,102 +18,101 @@
     </svg>
     
     <!-- Outer Circle -->
-	  <arc x="54" y="5" width="240" height="240" fill="peru"
+	<arc x="54" y="5" width="240" height="240" fill="peru"
 		arc-width="2" start-angle="0" sweep-angle="360" />
     
-	  <!-- Minute Hand -->
-	  <g id="mins" pointer-events="visible" transform="translate(50%,50%)">
+	<!-- Minute Hand -->
+	<g id="mins" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="0" x2="0" y2="-35%" fill="white" stroke-width="1" />
 		<line x1="0" y1="0" x2="0" y2="13%" fill="white" stroke-width="1" />
-	  </g>
-  
-	  <!-- Hour Hand -->
-	  <g id="hours" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+
+	<!-- Hour Hand -->
+	<g id="hours" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="0" x2="0" y2="-25%" fill="white" stroke-width="1" />
 		<line x1="0" y1="0" x2="0" y2="10%" fill="white" stroke-width="1" />
-	  </g>
-  
-	  <!-- Second Hand -->
-	  <g id="secs" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+
+	<!-- Second Hand -->
+	<g id="secs" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="0" x2="0" y2="-98" fill="fb-red" stroke-width="1" />
 		<line x1="0" y1="0" x2="0" y2="20" fill="fb-red" stroke-width="1" />
-	  </g>
-  
-  
-  
-	  <!-- Data Stuff -->
-	  <svg>
+	</g>
+
+
+	<!-- Data Stuff -->
+	<svg>
 		<text id="bar"      class="dataTextRight" x="348" y="22"  width="100" height="40"></text>
 		<text id="hrm"      class="dataTextLeft"  x="0"   y="250" width="120" height="40">--</text>
 		<text id="steps"    class="dataTextRight" x="348" y="250" width="100" height="40">--</text>
     <text id="stairs"   class="dataTextRight" x="348" y="220" width="100" height="40">--</text>
-	  <!-- 	<text id="timeText" class="dataTextLeft"  x="0"   y="22"  width="100" height="40">tiempo</text> -->
-	  </svg>
+	<!-- 	<text id="timeText" class="dataTextLeft"  x="0"   y="22"  width="100" height="40">tiempo</text> -->
+	</svg>
 		<!-- A different battery -->
 		<arc id="batArc" x="51" y="5" width="240" height="240" fill="fb-green"
 		arc-width="2" start-angle="239" sweep-angle="62" />
     <g id="batContainerTop" class="batContainer" pointer-events="visible" transform="translate(50%,50%)">
-      <line x1="0" y1="-123" x2="0" y2="-119" fill="peru" stroke-width="1" /> 
+		<line x1="0" y1="-123" x2="0" y2="-119" fill="peru" stroke-width="1" /> 
     </g>
     <g id="batContainerBottom" class="batContainer" pointer-events="visible" transform="translate(50%,50%)">
-      <line x1="0" y1="-123" x2="0" y2="-119" fill="peru" stroke-width="1" /> 
+		<line x1="0" y1="-123" x2="0" y2="-119" fill="peru" stroke-width="1" /> 
     </g>
-	
-	  <!-- Today's Date (near 3 o'clock) -->
-	  <svg>
-		 <text id="date" class="date" x="76%" y="135" width="100" height="40"></text>
-	  </svg>
 
-		<!-- The Timezone offset (if not in EST) -->
-	  <svg>
-		 <text id="tzOffSet" class="tzOffSet" text-anchor="middle" x="50%" y="80%" width="100" height="40">--</text>
-	  </svg>
-  
-	  <!-- Clock tick marks -->
-	   <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	<!-- Today's Date (near 3 o'clock) -->
+	<svg>
+		<text id="date" class="date" x="76%" y="135" width="100" height="40"></text>
+	</svg>
+
+	<!-- The Timezone offset (if not in EST) -->
+	<svg>
+		<text id="tzOffSet" class="tzOffSet" text-anchor="middle" x="50%" y="80%" width="100" height="40">--</text>
+	</svg>
+
+	<!-- Clock tick marks -->
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="1" />
-	  </g>
-	  <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="1" />
-	  </g>
-	  <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="1" />
-	  </g>
-	  <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="1" />
-	  </g>
-	  <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="1" />
-	  </g>
-	  <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="1" />
-	  </g>
-	  <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="1" />
-	  </g>
-	  <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="1" />
-	  </g>
-	  <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="1" />
-	  </g>
-	  <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="1" />
-	  </g>
-	  <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="1" />
-	  </g>
-	  <g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
+	</g>
+	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-100" x2="0" y2="-119" fill="peru" stroke-width="3" />
-	  </g>
-	  <!-- These elements go last so they renders on top (and are touchable) -->
-	  <circle id="centerCircle" cx="50%" cy="50%" r="10" fill="fb-green" pointer-events="visible"/>
-	  <circle id="centerCircleTappable" cx="50%" cy="50%" r="40" fill="#0088FF" fill-opacity="0.0" pointer-events="visible"/>
+	</g>
+	<!-- These elements go last so they renders on top (and are touchable) -->
+	<circle id="centerCircle" cx="50%" cy="50%" r="10" fill="fb-green" pointer-events="visible"/>
+	<circle id="centerCircleTappable" cx="50%" cy="50%" r="40" fill="#0088FF" fill-opacity="0.0" pointer-events="visible"/>
 	</svg> <!--Clock-->
 
 	<!--
-  <svg id="navButtons">
-	  <rect id="toLeft" x="0" y="75" width="40" height="100" fill="#DDDDDD" pointer-events="visible" />
-	  <rect id="toRight" x="308" y="75" width="40" height="100" fill="#DDDDDD" pointer-events="visible" />
+    <svg id="navButtons">
+		<rect id="toLeft" x="0" y="75" width="40" height="100" fill="#DDDDDD" pointer-events="visible" />
+		<rect id="toRight" x="308" y="75" width="40" height="100" fill="#DDDDDD" pointer-events="visible" />
 	</svg> <!--navButtons-->
 </svg> <!--Everything-->
