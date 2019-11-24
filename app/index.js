@@ -15,14 +15,19 @@ import * as periodic from "../common/periodic";
 display.autoOff = true;
 
 // Get DOM elements
+// Always on
 let hourHand =  document.getElementById("hours");
 let minHand =   document.getElementById("mins");
 let secHand =   document.getElementById("secs");
 let batArc =    document.getElementById("batArc");
-let stepText =  document.getElementById("steps");
 let date =      document.getElementById("date");
+let stepText =  document.getElementById("steps");
+let hrmText =   document.getElementById("hrm");
+// Sometimes on (mode 2)
 let stairText = document.getElementById("stairs");
+let barText =   document.getElementById("bar");
 let tzOffSet  = document.getElementById("tzOffSet");
+
 
 // Stuff for toggling the display on/off
 var centerCircle = document.getElementById("centerCircle");
@@ -35,6 +40,12 @@ var centerCircleTappable = document.getElementById("centerCircleTappable");
 // The all-important date
 let now = new Date();
 
+// Display mode
+var mode = 1; // For remembering which mode is currently active
+              // 1 = normal, green dot
+              // 2 = extra stats, yellow dot
+              // 3 = extra stats + display stays on, red dot
+
 // Fetch the user's resting heartrate (this does not need to be periodically updated - it changes very infrequently)
 let rHeartRate = user.restingHeartRate;
 
@@ -44,7 +55,6 @@ tzOffSet.text = tz;
 
 // Pressure Stuff
 var barom = new Barometer({ frequency: 1});
-let barText = document.getElementById("bar");
 barom.onreading = function() {
   barText.text = (parseInt(barom.pressure)/3386.3886).toFixed(2);
 }
@@ -52,9 +62,15 @@ barom.start(); //Initial barometer reading
 
 // Heartrate Stuff
 var hrm = new HeartRateSensor();
-let hrmText = document.getElementById("hrm");
 hrm.onreading = function() {
-  hrmText.text = hrm.heartRate + ' (' + rHeartRate + ')';
+  if (mode > 1)
+  {
+    hrmText.text = hrm.heartRate + ' (' + rHeartRate + ')';
+  }
+  else
+  {
+    hrmText.text = hrm.heartRate ;
+  }
 }
 hrm.start();
 
@@ -68,7 +84,15 @@ bps.onreading = function() {
   else
   {
     hrm.stop();
-    hrmText.text = '--' + ' (' + rHeartRate + ')';
+    if (mode > 1)
+    {
+      hrmText.text = '--' + ' (' + rHeartRate + ')';
+    }
+    else
+    {
+      hrmText.text = '--';
+    }
+    
   }
 }
 bps.start();
@@ -143,27 +167,46 @@ for (d = 0;d<2;d++)
 clock.granularity = "seconds";
 clock.ontick = () => updateClock();
 
-//Register tap events
+// Register tap events
 centerCircleTappable.onmousedown = function(e) {
-  displayToggle();
+  switchMode();
 }
 
-function displayToggle(){
+// Logic for the center button mode switching
+  // 1 = normal
+  // 2 = extra stats
+  // 3 = extra stats + display stays on
+function switchMode(){
   vibration.start("bump");
-  if (display.autoOff)
-    {
-      console.log("Disabling display auto-off");
-      centerCircle.style.fill = "#FF0000";
-      display.autoOff = false;
+  if (mode == 1)
+  {
+    mode = 2;
+    console.log("Switching to mode 2");
+    centerCircle.style.fill = "#F8FF87"; // Gross yellow
 
-      tzOffSet.style.opacity = parseInt("1.0");
-    }
-  else
-    {
-      console.log("Enabling display auto-off");
-      centerCircle.style.fill = "fb-green";
-      display.autoOff = true;
+    // Enable the extra stats
+    stairText.style.opacity = parseInt("1.0");
+    barText.style.opacity = parseInt("1.0");
+    tzOffSet.style.opacity = parseInt("1.0");
+    
+  }
+  else if (mode == 2)
+  {
+    mode = 3;
+    console.log("Switching to mode 3");
+    centerCircle.style.fill = "#FF0000";
+    display.autoOff = false;
+  }
+  else if (mode == 3)
+  {
+    mode = 1;
+    console.log("Enabling display auto-off");
+    console.log("Switching to mode 1");
+    centerCircle.style.fill = "fb-green";
+    display.autoOff = true;
 
-      tzOffSet.style.opacity = parseInt("0.0");
-    }
+    stairText.style.opacity = parseInt("0.0");
+    barText.style.opacity = parseInt("0.0");
+    tzOffSet.style.opacity = parseInt("0.0");
+  }
 }
