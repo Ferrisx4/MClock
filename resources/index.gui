@@ -16,7 +16,18 @@
         gradient-color1="#4C2800"
         gradient-color2="black" />
     </svg>
-    
+	
+    // These things go here so other elements can overlap them
+	<!-- Today's Date (near 3 o'clock) -->
+	<svg>
+		<text id="date" class="date" x="76%" y="135" width="100" height="40"></text>
+	</svg>
+
+	<!-- The Timezone offset (if not in EST) -->
+	<svg>
+		<text id="tzOffSet" class="tzOffSet" text-anchor="middle" x="50%" y="80%" width="100" height="40">--</text>
+	</svg>
+
     <!-- Outer Circle -->
 	<arc x="54" y="5" width="240" height="240" fill="peru"
 		arc-width="2" start-angle="0" sweep-angle="360" />
@@ -42,14 +53,14 @@
 
 	<!-- Data Stuff -->
 	<svg>
-		<text id="bar"      class="dataTextRight" x="348" y="22"  width="100" height="40"></text>
+		<text id="bar"      class="dataTextRight" x="348" y="22"  width="100" height="40" opacity="0.0"></text>
 		<text id="hrm"      class="dataTextLeft"  x="0"   y="250" width="120" height="40">--</text>
 		<text id="steps"    class="dataTextRight" x="348" y="250" width="100" height="40">--</text>
-    <text id="stairs"   class="dataTextRight" x="348" y="220" width="100" height="40">--</text>
+    	<text id="stairs"   class="dataTextRight" x="348" y="220" width="100" height="40" opacity="0.0">--</text>
 	<!-- 	<text id="timeText" class="dataTextLeft"  x="0"   y="22"  width="100" height="40">tiempo</text> -->
 	</svg>
-		<!-- A different battery -->
-		<arc id="batArc" x="51" y="5" width="240" height="240" fill="fb-green"
+	<!-- A different battery -->
+	<arc id="batArc" x="51" y="5" width="240" height="240" fill="fb-green"
 		arc-width="2" start-angle="239" sweep-angle="62" />
     <g id="batContainerTop" class="batContainer" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-123" x2="0" y2="-119" fill="peru" stroke-width="1" /> 
@@ -57,16 +68,6 @@
     <g id="batContainerBottom" class="batContainer" pointer-events="visible" transform="translate(50%,50%)">
 		<line x1="0" y1="-123" x2="0" y2="-119" fill="peru" stroke-width="1" /> 
     </g>
-
-	<!-- Today's Date (near 3 o'clock) -->
-	<svg>
-		<text id="date" class="date" x="76%" y="135" width="100" height="40"></text>
-	</svg>
-
-	<!-- The Timezone offset (if not in EST) -->
-	<svg>
-		<text id="tzOffSet" class="tzOffSet" text-anchor="middle" x="50%" y="80%" width="100" height="40">--</text>
-	</svg>
 
 	<!-- Clock tick marks -->
 	<g id="secs" class="clockTick" pointer-events="visible" transform="translate(50%,50%)">
