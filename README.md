@@ -1,5 +1,9 @@
 # MClock - A Fitbit Ionic Watch Face
 
+# DO NOT USE YOUR FITBIT IONIC
+Fitbit has issued a recall for all Ionic devices. Click [here](https://help.fitbit.com/en_US/ionic.htm) for information on how to return it and possible refunds and discounts.
+# DO NOT USE YOUR FITBIT IONIC
+
 ## Description
 The MClock (Midspin Clock) is a very basic simulated analog watch face.
 It features subtle design and basic information.
